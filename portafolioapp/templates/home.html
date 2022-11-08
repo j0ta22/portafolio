@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<header class="row bg-black">
+    <div class="col-md-4">
+        <img src="{% static 'portafolio/Juan.jpg' %}" class="img-fluid">
+    </div>
+
+    <div class="col-md-8 my-auto p-4">
+        <h1>Hola, soy <strong>Juan Candal</strong></h1>
+        <h3>Python fullstack developer</h3>
+        <p>Soy un desarrollador en busca de insertarse laboralmente en el mundo del software. Poseo
+            conocimientos en Python, HTML y CSS así como también de frameworks como Django y librerías
+            como Numpy, Pandas y otras. Me considero una persona autodidacta y con una gran capacidad para
+            la resolución de problemas, que busca constantemente, a través de la praxis, el perfeccionamiento de
+            las técnicas adquiridas. Mi objetivo es poder integrarme a un grupo de trabajo que me permita aportar
+            desde mi conocimiento y me ayude a desarrollar todo mi potencial.
+            </p>
+    </div>
+
+</header>
+
+
+<div class="row my-4 text-center">
+
+    <h3>Mis proyectos</h3>
+    <p>Estos son algunos de los trabajos que he desarrollado.</p>
+    {% for project in projects %}
+
+    <div class="col-4 md-4 p-4">
+        <div class="card bg-black card-project">
+            <img src="{{project.imagen.url}}" alt="{{project.titulo}}" class="card-img-top">
+            <div class="card-body">
+                <h2>{{project.titulo}}</h2>
+                <p>{{project.descripcion}}</p>
+
+        
+                {% if project.url %}
+        
+                    <a href="{{project.url}}" class="btn btn-light rounded-0 btn-sm" target="_blank">{{project.url}}</a>
+        
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+    {% endfor %}
+</div>
+
+{% endblock %}

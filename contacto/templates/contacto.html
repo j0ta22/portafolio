@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+
+
+<div class="col-md-4 p-4" style="margin: auto;">
+    {% if "Valido" in request.GET %}
+    <alert>Informacion recibida correctamente</alert>
+    {% endif %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{formulario.as_p}}
+        <input type="submit" value="Enviar">
+    </form>
+</div>
+
+{% endblock %}
